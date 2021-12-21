@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include <conio.h>
 #include<locale.h>
 #include<iso646.h>
 #include<math.h>
@@ -66,9 +65,9 @@ void fastSort(long double* array3, int start, int end)
 }
 
 	if (start < right)
-		fastSort(arr3, start, right);
+		fastSort(array3, start, right);
 	if (end > left)
-		fastSort(arr3, left, end);
+		fastSort(array3, left, end);
 
 }
 
@@ -81,7 +80,7 @@ void sortInsertion(long double* array2, int size)
 
 	for (f = 1; f < size; f++)
 	{
-		for (k = i; k > 0; and array2[k - 1] > array2[k]; k--)
+		for (k = f; k > 0 and array2[k - 1] > array2[k]; k--)
 		{
 			b = array2[k];
 			array2[k] = array2[k - 1];
@@ -115,7 +114,7 @@ int main()
 	setlocale(LC_ALL, "Rus");
 	srand(time(NULL));
 
-	printf_s("Читаем файл\n\n");
+	printf("Читаем файл\n\n");
 
 	size = stringCount(file);
 
@@ -126,7 +125,7 @@ int main()
 		return 1;
 
 	for (int i = 0; i < size; i++)
-		fscanf_s(file, "%lf", &MASSIVE1[i]);
+		fscanf(file, "%Lf", &MASSIVE1[i]);
 
 
 	memcpy(MASSIVE2, MASSIVE1, sizeof(long double) * size);
@@ -137,7 +136,7 @@ int main()
 
 		do
 		{
-			scanf_s("%d", &flag);
+			scanf("%d", &flag);
 			if (flag < 1 or flag > 4)
 			{
 				printf("Ошибка. Введите значение снова\n\nВЫБОР:");
@@ -150,7 +149,7 @@ int main()
 			printf("Выберите способ сортировки:\n1. Пузырьком\n2. Вставками\n3. Быстрая\n4. Вернуться в меню\n\nВыбор:");
 			do
 			{
-				scanf_s("%d", &flag2);
+				scanf("%d", &flag2);
 				if (flag2 < 1 or flag2 > 4)
 				{
 					printf("Неверный ввод. Введите снова\n Выбор:");
@@ -168,7 +167,7 @@ int main()
 				time_on_prog = (double)(endTime - startTime) / 1000;
 
 				printf("Соритровка завершена\n");
-				printf_s("Время выполнения %f\n\n", time_on_prog);
+				printf("Время выполнения %f\n\n", time_on_prog);
 			}
 			else if (flag2 == 2)
 			{
@@ -180,7 +179,7 @@ int main()
 				time_on_prog = (double)(endTime - startTime) / 1000;
 
 				printf("Сортировка завершена\n");
-				printf_s("Время выполнения %f\n\n", time_on_prog);
+				printf("Время выполнения %f\n\n", time_on_prog);
 			}
 
 			else if (flag2 == 3)
@@ -193,7 +192,7 @@ int main()
 				time_on_prog = (double)(endTime - startTime) / 1000;
 
 				printf("Сортировка завершена\n");
-				printf_s("Время выполнения %f\n\n", time_on_prog);
+				printf("Время выполнения %f\n\n", time_on_prog);
 			}
 			else
 			{
@@ -203,13 +202,13 @@ int main()
 		if (flag == 2)
 		{
 			for (i = 0; i < size; i++)
-				printf_s("MASSIVE1[%d] = %lf\n", i, MASSIVE2[i]);
+				printf("MASSIVE1[%d] = %Lf\n", i, MASSIVE2[i]);
 		}
 		if (flag == 3)
 		{
 			clrscr();
 			memcpy(MASSIVE2, MASSIVE1, sizeof(long double) * size);
-			printf_s("Сортировка успешно сброшена.\n\n");
+			printf("Сортировка успешно сброшена.\n\n");
 
 		}
 		if (flag == 4)
