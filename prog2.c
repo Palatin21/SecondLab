@@ -9,7 +9,7 @@
 #include<math.h>
 
 
-clrscr()
+void clrscr()
 {
 	system("@cls||clear");
 }
@@ -41,11 +41,17 @@ void fastSort(long double* array3, int start, int end)
 			left++;
 			right--;
 		}
+    	if (start < right){
+		fastSort(array3, start, right);
+  }
+	  if (end > left){
+		  fastSort(array3, left, end);
+  }
 	}
+}
 
-    //Пузырьковая сортировка
-    void bSort(long double* array1, int size)
-{
+//Пузырьковая сортировка
+void bSort(long double* array1, int size) {
 	printf("Пожалуйста, подождите. Идет процесс сортировки\n");
 	int a, b;
 	long double c;
@@ -62,12 +68,7 @@ void fastSort(long double* array3, int start, int end)
 			}
 		}
 	}
-}
 
-	if (start < right)
-		fastSort(array3, start, right);
-	if (end > left)
-		fastSort(array3, left, end);
 
 }
 
@@ -109,7 +110,7 @@ int main()
 	double startTime, endTime, time_on_prog;
 	long double* MASSIVE1, * MASSIVE2;
 
-	FILE* file = fopen("Users/Prog/TextFile.txt", "r");
+	FILE* file = fopen("textFile.txt", "r");
 
 	setlocale(LC_ALL, "Rus");
 	srand(time(NULL));
@@ -202,7 +203,7 @@ int main()
 		if (flag == 2)
 		{
 			for (i = 0; i < size; i++)
-				printf("MASSIVE1[%d] = %Lf\n", i, MASSIVE2[i]);
+				printf("%d) %Lf\n", i, MASSIVE2[i]);
 		}
 		if (flag == 3)
 		{
